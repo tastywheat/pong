@@ -5,7 +5,7 @@ defmodule Pong do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Pong.Router, []),
+      worker(Pong.Router, [])
     ]
 
     opts = [strategy: :one_for_one, name: Pong.Supervisor]

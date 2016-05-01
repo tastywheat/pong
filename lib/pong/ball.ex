@@ -8,9 +8,7 @@ defmodule Pong.Ball do
     
     # Client
     def start_link do
-        
         initial_state = %Pong.Ball{}
-    
         GenServer.start_link(__MODULE__, initial_state, name: :ball)
     end 
     
@@ -51,12 +49,9 @@ defmodule Pong.Ball do
         
         c_angle_in_radians = c_angle / 180 * :math.pi
         a_angle_in_radians = a_angle / 180 * :math.pi
-       
-        IO.puts c_angle
-        IO.puts a_angle
-        IO.puts a_side
+
         c_side = a_side * :math.sin(c_angle_in_radians) / :math.sin(a_angle_in_radians)
-        IO.puts c_side
+      
         case get_quadrant(angle) do
             1 -> {x - c_side, 0}
             2 -> {x + c_side, 0}
@@ -97,13 +92,6 @@ defmodule Pong.Ball do
         end
         
         angle_a = 180 - 90 - abs(angle_c)
-        
-        #IO.puts angle
-        #IO.puts x_direction
-        #IO.puts y_direction
-        #IO.puts angle_a
-        #IO.puts angle_c
-        
         
         angle_c_in_radians = angle_c / 180 * :math.pi
         angle_a_in_radians = angle_a / 180 * :math.pi
